@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "215634851827",
+    "project_id": "mcproject-6ed6b",
+    "storage_bucket": "mcproject-6ed6b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215634851827:android:b4b5d3c68a9d33081c4486",
+        "android_client_info": {
+          "package_name": "com.lostgifts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215634851827-6c4i5ctgrtcu1e7febaf0r3sncktet93.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4cFdeRmfX0tb-DuHXG_FTGV7e7KVsMjs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215634851827-6c4i5ctgrtcu1e7febaf0r3sncktet93.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
