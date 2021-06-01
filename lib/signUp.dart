@@ -5,9 +5,6 @@ import 'package:flutter/gestures.dart';
 import 'package:lost_gifts/welcome.dart';
 import 'login.dart';
 import 'welcome.dart';
-//import 'load_data.dart';
-//import 'constants.dart';
-//import 'package:email_auth/email_auth.dart';
 
 class SignUp extends StatefulWidget {
   String email;
