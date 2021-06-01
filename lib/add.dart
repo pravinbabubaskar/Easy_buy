@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:feedthenead/widgets/custom_file_button.dart';
 //import 'package:feedthenead/widgets/custom_text.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lost_gifts/welcome.dart';
@@ -20,12 +21,55 @@ class addProduct extends StatefulWidget {
 }
 
 class _addProductState extends State<addProduct> {
+
+  final _auth = FirebaseAuth.instance;
+
+  User fbuser;
+
+  String userName;
+
+  @override
+
+  void initState() {
+
+    super.initState();
+
+    getUser();
+
+  }
+
+
+
+  void getUser() async {
+
+    try {
+
+      final user = await _auth.currentUser;
+
+      if (user != null) {
+
+        fbuser = user;
+
+        userName = fbuser.email;
+
+        print(userName);
+
+      }
+
+    } catch (e) {
+
+      print(e);
+
+    }
+
+  }
+
   final _key = GlobalKey<ScaffoldState>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   int dropdownValue = 1;
   int quantity = 1;
 
-  String name, des, contact, mail;
+  String name, des, contact, mail,cost;
   File _image;
   final picker = ImagePicker();
   final _firebaseStorage = FirebaseStorage.instance;
@@ -53,22 +97,41 @@ class _addProductState extends State<addProduct> {
 
         var downloadUrl = await snapshot.ref.getDownloadURL();
 
-        setState(() {
+
+
+
+     /* Map<String, dynamic> data = 
+      {
+        "name": data1.text,
+        "phone": data2.text,
+        "category": category,
+      "email": userName,
+      };
+      FirebaseFirestore.instance.collection("Lost_Items").doc('$userName').update(data);
+
+      */
+
+
+
+
+
+
+
+
+      setState(() {
           imageUrl = downloadUrl;
-          users.doc('BnorNcW1pGkX8xlB0lQZ').update({
-            "item"
-             :
-            FieldValue.
-            arrayUnion([
-              {
+          users.doc('$userName').set({
+            //"item": FieldValue.arrayUnion([
+              //{
                 "name": name,
                 "Contact": contact,
                 "description": des,
                 "Email": mail,
+                "cost":cost,
                 "p_url": imageUrl,
 
-              },
-            ]),
+              //},
+            //]),
           }).then((value) {
             print("product Updated");
 
@@ -354,6 +417,39 @@ class _addProductState extends State<addProduct> {
                 ),
               ),
             ),
+
+            Padding(
+              padding: const EdgeInsets.only(left: 12, right: 12, bottom: 12),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.black, width: 0.2),
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          offset: Offset(2, 7),
+                          blurRadius: 7)
+                    ]),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 14),
+                  child: TextFormField(
+                      validator: (input) {
+                        if (input.isEmpty) return 'Cost ?.';
+                      },
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Cost",
+                          hintStyle: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "raleway",
+                              fontSize: 18)),
+                      onSaved: (input) => cost = input),
+                ),
+              ),
+            ),
+
             Padding(
               padding: const EdgeInsets.only(left: 12, right: 12, bottom: 12),
               child: Container(

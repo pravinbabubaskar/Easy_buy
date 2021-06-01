@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lost_gifts/add.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:lost_gifts/find.dart';
+import 'find.dart';
 import 'login.dart';
 class welcome extends StatefulWidget{
   @override
@@ -17,6 +18,15 @@ class _WelcomeState extends State<welcome> {
     Navigator.push(context,
         MaterialPageRoute(
             builder:(context)=>addProduct()
+        )
+    );
+  }
+
+  void tofind()
+  {
+    Navigator.push(context,
+        MaterialPageRoute(
+            builder:(context)=>HotelPage()
         )
     );
   }
@@ -86,7 +96,7 @@ class _WelcomeState extends State<welcome> {
                         borderRadius: new BorderRadius.circular(20.0),
                       ) // foreground
                   ),
-                  //onPressed: verify,
+                  onPressed: tofind,
                   child: Text(
                     'FIND',
                     style: TextStyle(fontSize: 15,color: Colors.teal,),
