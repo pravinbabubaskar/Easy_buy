@@ -121,7 +121,7 @@ class _SignUpState extends State<SignUp> {
                   height: 40,
                 ),
                 Container(
-                  height: 250,
+                  height: 150,
                   //child: Image(
                    // image: AssetImage("images/logo.png"),
                    // fit: BoxFit.contain,

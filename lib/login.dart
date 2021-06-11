@@ -85,13 +85,13 @@ class _LoginState extends State<Login> {
               SizedBox(
                 height: 40,
               ),
-              /*Container(
-                height: 250,
-                child: Image(
-                  image: AssetImage("images/logo.png"),
-                  fit: BoxFit.contain,
-                ),
-              ),*/
+              Container(
+                height: 150,
+                //child: Image(
+                  //image: AssetImage("images/logo.png"),
+                //  fit: BoxFit.contain,
+                //),
+              ),
               SizedBox(
                 height: 20,
               ),

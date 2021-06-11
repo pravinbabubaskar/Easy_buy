@@ -26,7 +26,7 @@ class _WelcomeState extends State<welcome> {
   {
     Navigator.push(context,
         MaterialPageRoute(
-            builder:(context)=>HotelPage()
+            builder:(context)=>findPage()
         )
     );
   }
