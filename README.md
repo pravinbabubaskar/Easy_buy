@@ -1,4 +1,4 @@
-# Lets_Buy
+# Easy_Buy
 
 A new Flutter application.
 
